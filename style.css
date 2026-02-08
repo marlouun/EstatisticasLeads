@@ -1,6 +1,142 @@
-body { background-color: #f8f9fa; }
-.card-stat { border-left: 5px solid #0d6efd; transition: transform 0.2s; }
-.card-stat:hover { transform: translateY(-5px); }
-.stat-value { font-size: 2rem; font-weight: bold; }
-.loader { border: 5px solid #f3f3f3; border-top: 5px solid #3498db; border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; margin: 50px auto; }
-@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+/* Tema Monocromático com Tons de Cinza */
+:root {
+    --bg-color: #121212;
+    --card-bg-color: #1E1E1E;
+    --border-color: #2C2C2C;
+    --text-color: #E0E0E0;
+    --heading-color: #FFFFFF;
+    --muted-text-color: #9E9E9E; /* Tom mais claro para legibilidade */
+
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --glow-color: rgba(255, 255, 255, 0.07);
+
+    --card-shadow: 0 4px 12px var(--shadow-color);
+    --card-hover-shadow: 0 8px 24px var(--shadow-color);
+    --border-radius: 0.5rem;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Cabeçalho */
+.header {
+    background-color: transparent;
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.header h1 {
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-weight: 600;
+    color: var(--heading-color);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.btn-primary {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: #2a2a2a;
+    border-color: var(--muted-text-color);
+}
+
+/* Cards de Estatísticas e Gráficos */
+.card-stat, .card-chart {
+    background-color: var(--card-bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--card-shadow);
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.card-stat:hover, .card-chart:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-hover-shadow);
+    border-color: #4a4a4a;
+}
+
+.card-stat .card-body {
+    padding: 1.5rem;
+}
+
+.stat-icon {
+    width: 32px;
+    height: 32px;
+    color: var(--muted-text-color); /* Cor base do ícone */
+    transition: color 0.2s;
+}
+
+.card-stat:hover .stat-icon {
+    color: var(--heading-color); /* Ícone fica branco ao passar o mouse */
+}
+
+.stat-value {
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--heading-color);
+}
+
+.card-stat h6 {
+    font-weight: 500; /* Mais legível */
+    color: var(--muted-text-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Gráficos */
+.card-chart .card-header {
+    background-color: transparent;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--heading-color);
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-weight: 600;
+}
+
+/* Loader */
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 50vh;
+    color: var(--muted-text-color);
+}
+.loader {
+    border: 5px solid var(--border-color);
+    border-top: 5px solid var(--heading-color);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Rodapé */
+.footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: var(--muted-text-color);
+    border-top: 1px solid var(--border-color);
+}
